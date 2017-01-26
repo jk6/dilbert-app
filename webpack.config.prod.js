@@ -14,7 +14,7 @@ module.exports = {
       'react-dom',
       'react-router',
       'react-tap-event-plugin'
-      ]
+    ]
   },    
   output: {
     path: path.join(__dirname, 'public'),

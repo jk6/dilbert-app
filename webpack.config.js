@@ -2,7 +2,20 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: ['babel-polyfill', './main.js'],
+  entry: {
+    app: ['babel-polyfill', './main.js'],
+    vendor: [      
+      'axios',
+      'lodash',
+      'material-ui',
+      'mobx',
+      'mobx-react',
+      'react',
+      'react-dom',
+      'react-router',
+      'react-tap-event-plugin'
+    ]
+  },
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -45,6 +58,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   }
