@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "name": "Dilbert",
+        "occupation": "Engineer",
+        "imageUrl": "images/dilbert.png",
+        "info": "Until October 2014, he was usually depicted wearing a white dress shirt, black trousers and a red-and-black striped tie that inexplicably curves upward; after October 13, 2014, his standard apparel changed to a red polo shirt with a name badge on a lanyard around his neck."
+    },
+    {
+        "id": "2",
+        "name": "Catbert",
+        "occupation": "HR Director",
+        "imageUrl": "images/catbert.png",
+        "info": "Catbert is a fictional cat, and the 'evil director of human resources' in the Dilbert comic strip. He was supposed to be a one-time character but resonated with readers so well that Adams brought him back as the HR director."
+
+    },
+    {
+        "id": "3",
+        "name": "Dogbert",
+        "occupation": "Consultant",
+        "imageUrl": "images/dogbert.jpg",
+        "info": "Dilbert's anthropomorphic pet dog is the smartest dog on Earth. Dogbert is a megalomaniac intellectual dog, planning to one day conquer the world. He once succeeded, but became bored with the ensuing peace, and quit. Often seen in high-ranking consultant or technical support jobs, he constantly abuses his power and fools the management of Dilbert's company."
+    },
+    {
+        "id": "4",
+        "name": "Wally",
+        "occupation": "Engineer",
+        "imageUrl": "images/wally.jpg",
+        "info": "Wally was inspired by a coworker of creator Scott Adams at Pacific Bell. In Seven Years of Highly Defective People and What Would Wally Do, Adams explained that his co-worker at Pacific Bell had made a bad judgment call, so management froze him at his position and pay scale rather than fire him."
+    },
+    {
+        "id": "5",
+        "name": "Alice",
+        "imageUrl": "images/alice.gif",
+        "occupation": "Engineer",
+        "info": "Alice is, by far, the hardest-working employee at Path-E-Tech. She's also the highest paid (at times), and is a chronic overachiever, which often puts her at odds with Wally and his apathetic laziness. "   
+    },
+    {
+        "id": "6",
+        "name": "PHB",
+        "occupation": "Middle Manager",
+        "imageUrl": "images/phb.jpg",
+        "info": "The Boss is frequently childish, immature, ignorant, and rude, yet also annoyingly cheerful and oblivious to his own actions. He frequently uses bizarre metaphors and analogies to 'motivate' employees (Adams admits this to be a pet peeve), and on the TV series engages in rambling non sequiturs in conversation."   
+    },
+    {
+        "id": "7",
+        "name": "Loud Howard",
+        "occupation": "Engineer",
+        "imageUrl": "images/loud-howard.jpg",
+        "info": "Loud Howard is an engineer for Path-E-Tech and is a minor character in the strip, but he was a regular on the TV series."   
+    }
+]

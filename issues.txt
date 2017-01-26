@@ -1,0 +1,7 @@
+** SOLVED **. refreshing an Info page no longer works - route is reloading, but displayInfo content isn't.
+
+Fixed issue by converting Info from stateless functional component to @observer class
+
+Now calling store's getSelectedPerson function from Info, passing in id (from this.props.params.id)
+
+Refreshing on a person's info page now works properly.
