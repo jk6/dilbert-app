@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill', './main.js'],
+    app: ['babel-polyfill', './src/main.js'],
     vendor: [      
       'axios',
       'lodash',

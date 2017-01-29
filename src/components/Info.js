@@ -3,7 +3,8 @@ import { observer } from 'mobx-react';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
  
-@observer class Info extends Component {
+@observer(['characters'])
+class Info extends Component {
     constructor (props){
         super (props);
     }
@@ -20,9 +21,9 @@ import FlatButton from 'material-ui/FlatButton';
             height: 140,
             width: 280
         };    
-        this.props.route.store.getSelectedPerson(this.props.params.id);
+        this.props.characters.getSelectedPerson(this.props.params.id);
 
-        const { name, occupation, info, imageUrl } = this.props.route.store.selectedPerson;
+        const { name, occupation, info, imageUrl } = this.props.characters.selectedPerson;
         
         return (
             <div style={containerStyle}>               

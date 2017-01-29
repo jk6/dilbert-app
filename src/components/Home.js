@@ -6,9 +6,13 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-@observer class Home extends Component {
+@observer(['characters']) 
+class Home extends Component {
     viewInfo (id){
         hashHistory.push(`/info/${id}`);
+    }
+    componentDidMount (){
+        //this.props.characters.getData();
     }
     render () {        
         const styles = {
@@ -32,7 +36,7 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
                 >
                     <Subheader>Characters</Subheader>
                     
-                    {this.props.route.store.data.map((person, i) => {
+                    {this.props.characters.data.map((person, i) => {
                         let id = person.id;
                         var boundClick = this.viewInfo.bind(this, id);
                         return (                            

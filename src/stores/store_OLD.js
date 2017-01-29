@@ -17,7 +17,7 @@ appState.getData = function (){
 appState.getSelectedPerson = function (id){
   this.data.filter(person => person.id == id)    
     .map(person => Object.assign(this.selectedPerson, person))
-}        
+}       
 
 appState.changeName = function (newName){
   this.name = newName;
