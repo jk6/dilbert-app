@@ -6,11 +6,13 @@ module.exports = {
     app: ['babel-polyfill', './src/main.js'],
     vendor: [      
       'axios',
+      'bootstrap',
       'lodash',
       'material-ui',
       'mobx',
       'mobx-react',
       'react',
+      'react-bootstrap',
       'react-dom',
       'react-router',
       'react-tap-event-plugin'

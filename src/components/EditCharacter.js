@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import { observer } from 'mobx-react';
+import 'bootstrap/dist/css/bootstrap.css';
 
 @observer(['characters'])
 class EditCharacter extends Component {
     constructor (props){
         super (props);
-
-        //this.handleChange = this.handleChange.bind(this);
+        
         this.handleEditCharacter = this.handleEditCharacter.bind(this);
     }
     handleEditCharacter (){
@@ -14,8 +15,7 @@ class EditCharacter extends Component {
         this.props.characters.editCharacter();
     }
     handleChange (field, e){        
-        this.props.characters.newObj[field] = e.target.value;
-        alert(this.props.characters.newObj[field]);
+        this.props.characters.newObj[field] = e.target.value;        
     }
     componentDidMount (){
         this.props.characters.getData();
@@ -26,16 +26,17 @@ class EditCharacter extends Component {
         //const newObj = { id, name, occupation, imageUrl, info };
         return (
             <div>
-                <h3>Editing {name}</h3> <img src={imageUrl} style={imageStyle} />                
-                <br />
-                <hr />
-                <input type="text" defaultValue={name} onBlur={this.handleChange.bind(this, 'name')}  /><br />
-                <input type="text" defaultValue={occupation} onBlur={this.handleChange.bind(this, 'occupation')} /><br />
-                <input type="text" defaultValue={imageUrl} onBlur={this.handleChange.bind(this, 'imageUrl')} /><br />
-                <input type="text" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
-                <br />
-                <button onClick={this.handleEditCharacter}>Save changes</button>
-
+                <Col md={6} mdOffset={2}>
+                    <h3>Editing {name}</h3> <img src={imageUrl} className="img img-circle" style={imageStyle} />                
+                    <br />
+                    <hr />
+                    <input type="text" className="form form-control" defaultValue={name} onBlur={this.handleChange.bind(this, 'name')}  /><br />
+                    <input type="text" className="form form-control" defaultValue={occupation} onBlur={this.handleChange.bind(this, 'occupation')} /><br />
+                    <input type="text" className="form form-control" defaultValue={imageUrl} onBlur={this.handleChange.bind(this, 'imageUrl')} /><br />
+                    <textarea type="text" rows="5" className="form form-control" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
+                    <br />
+                    <button className="btn btn-primary" onClick={this.handleEditCharacter}>Save changes</button>
+                </Col>
             </div>
         );
     }
@@ -43,7 +44,7 @@ class EditCharacter extends Component {
 
 const imageStyle = {
     height: 140,
-    width: 120
+    width: 140
 };
 
 export default EditCharacter;

@@ -9,7 +9,6 @@ import Info from './components/Info';
 import Admin from './components/Admin';
 import EditCharacter from './components/EditCharacter';
 import NotFound from './components/NotFound';
-//import appState from './stores/store';
 import stores from './stores/store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
