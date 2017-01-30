@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, hashHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { observer } from 'mobx-react';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -9,13 +10,21 @@ class EditCharacter extends Component {
         super (props);
         
         this.handleEditCharacter = this.handleEditCharacter.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
     }
     handleEditCharacter (){
         this.props.characters.newObj.id = this.props.params.id;
-        this.props.characters.editCharacter();
+        this.props.characters.editCharacter();        
+        hashHistory.push('/admin');
     }
     handleChange (field, e){        
         this.props.characters.newObj[field] = e.target.value;        
+    }
+    handleCancel (e){
+        e.preventDefault();
+        
+        this.props.characters.newObj = {};
+        hashHistory.push('/admin');
     }
     componentDidMount (){
         this.props.characters.getData();
@@ -36,6 +45,8 @@ class EditCharacter extends Component {
                     <textarea type="text" rows="5" className="form form-control" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
                     <br />
                     <button className="btn btn-primary" onClick={this.handleEditCharacter}>Save changes</button>
+                    &nbsp;&nbsp;
+                    <a href="" onClick={this.handleCancel}>cancel</a>
                 </Col>
             </div>
         );

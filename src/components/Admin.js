@@ -43,17 +43,7 @@ class Admin extends Component {
     componentDidMount (){
         //this.props.characters.getData();
     }
-    render (){
-        {/*let displayData = this.props.characters.data.map((person, i) => {            
-            return <li key={i}>
-                        {person.name} | 
-                        <img src={person.imageUrl} 
-                            style={{height: 25, width: 25}} 
-                        />&nbsp;                                                
-                        {this.props.admin.edit &&<Link to={`/edit/${person.id}`}>edit</Link>}                            
-                    </li>;
-
-        });*/}
+    render (){        
         let displayData = this.props.characters.data.map((person, i) => {
             return (                
                     <span key={i}>
@@ -73,7 +63,6 @@ class Admin extends Component {
             );
         });
 
-
         return (
             <div>     
                 <Row>     
@@ -87,29 +76,31 @@ class Admin extends Component {
                                 <span>Log In</span>
                             }
                         </button>
+                        <hr />
                     </Col>
                 </Row>
                 <Row>
-                <Col md={6} mdOffset={2}>                                       
-                    <ul>
-                        {displayData}
-                    </ul>
-                    <br />
-                    <hr />
-                    <h3>Add New Character</h3>
-                    <br />                                                                                                                    
-                    <input type="text" id="addName" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter new name..." ref={(text) => this.newName = text} /><br />
-                    <input type="text" id="addOccupation" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter occupation..." ref={(text) => this.newOccupation = text} /><br />
-                    <input type="text" id="addInfo" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter image url..." ref={(text) => this.newImage = text} /><br />
-                    <textarea type="text" id="addImage" rows="5" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter info..." ref={(text) => this.newInfo = text} /><br />
-                    <br />
-                    <button disabled={!this.props.admin.edit} className="btn btn-primary" onClick={this.handleAdd} id="add">Add</button>                    
-                </Col>
+                    <Col md={6} mdOffset={2}>
+                        <h3>Edit An Existing Character</h3>                    
+                        <br />                                       
+                        <ul>
+                            {displayData}
+                        </ul>
+                        <br />
+                        <hr />
+                        <h3>Add A New Character</h3>
+                        <br />                                                                                                                    
+                        <input type="text" id="addName" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter new name..." ref={(text) => this.newName = text} /><br />
+                        <input type="text" id="addOccupation" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter occupation..." ref={(text) => this.newOccupation = text} /><br />
+                        <input type="text" id="addInfo" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter image url..." ref={(text) => this.newImage = text} /><br />
+                        <textarea type="text" id="addImage" rows="5" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter info..." ref={(text) => this.newInfo = text} /><br />
+                        <br />
+                        <button disabled={!this.props.admin.edit} className="btn btn-primary" onClick={this.handleAdd} id="add">Add</button>                    
+                    </Col>
                 </Row>
             </div>
          );
     }
-
 }
 
 const styles = {
