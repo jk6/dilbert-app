@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { Link, hashHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
@@ -12,6 +13,7 @@ class EditCharacter extends Component {
         this.handleEditCharacter = this.handleEditCharacter.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
     }
+    @action('handle edit actions')
     handleEditCharacter (){
         this.props.characters.newObj.id = this.props.params.id;
         this.props.characters.editCharacter();        
@@ -20,6 +22,7 @@ class EditCharacter extends Component {
     handleChange (field, e){        
         this.props.characters.newObj[field] = e.target.value;        
     }
+    @action('handle cancel')
     handleCancel (e){
         e.preventDefault();
         

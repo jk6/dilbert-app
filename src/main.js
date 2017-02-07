@@ -19,8 +19,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 
 let mountNode = document.getElementById('content');
-ReactDOM.render((
-    <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+ReactDOM.render(
+    (<MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
         <Provider characters={stores.characters} admin={stores.adminState}>
             <Router history={hashHistory}>
                 <Route path="/" component={AppContainer}>
@@ -33,4 +33,3 @@ ReactDOM.render((
             </Router>
         </Provider>
     </MuiThemeProvider>), mountNode);
-
