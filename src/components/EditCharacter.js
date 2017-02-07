@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 import { Link, hashHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import { observer, inject } from 'mobx-react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 @inject('characters') @observer
@@ -36,7 +36,7 @@ class EditCharacter extends Component {
         return (
             <div>
                 <Col md={6} mdOffset={2}>
-                    <h3>Editing {name}</h3> <img src={imageUrl} className="img img-circle" style={imageStyle} />                
+                    <h3>Editing {name}</h3> <img src={imageUrl} className="img img-circle" style={styles.image} />                
                     <br />
                     <hr />
                     <input type="text" className="form form-control" defaultValue={name} onBlur={this.handleChange.bind(this, 'name')}  /><br />
@@ -58,9 +58,11 @@ class EditCharacter extends Component {
     }
 }
 
-const imageStyle = {
-    height: 140,
-    width: 140
+const styles = {
+    image: {
+        height: 140,
+        width: 140
+    }    
 };
 
 export default EditCharacter;

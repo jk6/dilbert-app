@@ -16,7 +16,7 @@ class Info extends Component {
         const { name, occupation, info, imageUrl } = this.props.characters.selectedPerson;
         
         return (            
-            <div style={containerStyle}>               
+            <div style={styles.container}>               
                 <Col md={12}>
                     <Card zDepth={3}>
                         <CardHeader title={name} subtitle={occupation} />
@@ -35,17 +35,19 @@ class Info extends Component {
     }    
 }
 
-const infoStyle = {
-    height: 200,
-    width: 400
-};   
-const imageStyle = {
-    height: 300,
-    width: 400
+const styles = {
+    info: {
+        height: 200,
+        width: 400
+    },   
+    image: {
+        height: 300,
+        width: 400
+    },
+    container: {
+        height: 140,
+        width: 280
+    } 
 };
-const containerStyle = {
-    height: 140,
-    width: 280
-}; 
 
 export default Info;

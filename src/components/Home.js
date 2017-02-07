@@ -14,20 +14,7 @@ class Home extends Component {
     componentDidMount (){
         //this.props.characters.getData();
     }
-    render () {        
-        const styles = {
-            root: {
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-            },
-            gridList: {
-                width: 600,
-                height: 550,
-                overflowY: 'auto',
-                cursor: 'pointer'
-            },
-        };
+    render () {                
         return (
             <div style={styles.root}>                               
                 <GridList
@@ -56,5 +43,19 @@ class Home extends Component {
         );
     }
 }
+
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: 600,
+        height: 550,
+        overflowY: 'auto',
+        cursor: 'pointer'
+    },
+};
 
 export default Home;
