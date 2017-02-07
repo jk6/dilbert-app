@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Link, hashHistory } from 'react-router';
 import Avatar from 'material-ui/Avatar';
@@ -7,7 +7,7 @@ import Chip from 'material-ui/Chip';
 import FontIcon from 'material-ui/FontIcon';
 import 'bootstrap/dist/css/bootstrap.css';
 
-@observer(['characters', 'admin'])
+@inject('characters', 'admin') @observer
 class Admin extends Component {
     constructor (props){
         super (props);

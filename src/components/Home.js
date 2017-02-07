@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { hashHistory } from 'react-router';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-@observer(['characters']) 
+@inject('characters') @observer
 class Home extends Component {
     viewInfo (id){
         hashHistory.push(`/info/${id}`);

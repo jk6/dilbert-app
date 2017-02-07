@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { Row, Col } from 'react-bootstrap';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import 'bootstrap/dist/css/bootstrap.css';
- 
-@observer(['characters'])
+
+@inject('characters') @observer
 class Info extends Component {
     constructor (props){
         super (props);

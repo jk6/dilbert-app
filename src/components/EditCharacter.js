@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-@observer(['characters'])
+@inject('characters') @observer
 class EditCharacter extends Component {
     constructor (props){
         super (props);
@@ -44,7 +44,12 @@ class EditCharacter extends Component {
                     <input type="text" className="form form-control" defaultValue={imageUrl} onBlur={this.handleChange.bind(this, 'imageUrl')} /><br />
                     <textarea type="text" rows="5" className="form form-control" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
                     <br />
-                    <button className="btn btn-primary" onClick={this.handleEditCharacter}>Save changes</button>
+                    <button 
+                        className="btn btn-primary" 
+                        onClick={this.handleEditCharacter}
+                    >
+                        Save changes
+                    </button>
                     &nbsp;&nbsp;
                     <a href="" onClick={this.handleCancel}>cancel</a>
                 </Col>
