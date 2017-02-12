@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { Link, hashHistory } from 'react-router';
 import Avatar from 'material-ui/Avatar';
-import Chip from 'material-ui/Chip';
+import { Card, CardActions, CardTitle } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { List, ListItem } from 'material-ui/List';
+import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -12,8 +16,7 @@ class Admin extends Component {
     constructor (props){
         super (props);
 
-        this.handleAdd = this.handleAdd.bind(this);        
-        this.handleEditState = this.handleEditState.bind(this);         
+        this.handleAdd = this.handleAdd.bind(this);                      
     }        
     handleAdd (){
         let id = this.props.characters.data.length + 1;
@@ -31,80 +34,102 @@ class Admin extends Component {
         };
 
         this.props.characters.addCharacter(newCharacter);                
-    }
-    handleEditState (){        
-        this.props.admin.checkCred(this.user.value, this.pass.value);
     }    
     handleTouchTap (id){
         hashHistory.push(`/edit/${id}`);
     }    
     componentDidMount (){
-        this.props.characters.loadCharacters();
+        //this.props.characters.loadCharacters();
     }
     render (){        
-        let displayData = this.props.characters.data.map((person, i) => {
-            return (                
-                    <span key={i}>
-                        <Chip
-                            disabled={!this.props.admin.edit}
-                            onTouchTap={this.handleTouchTap.bind(this, person.id)}
-                            style={styles.chip}
-                        >
-                            <Avatar src={person.imageUrl} />
-                            {!this.props.admin.edit ? 
-                                <span>{person.name}</span>
-                                : 
-                                <span>{person.name} - edit</span>
-                            }                                                
-                        </Chip>
-                    </span>                
+        let displayData = this.props.characters.data.map((person, i) => {            
+            return (                                
+                <ListItem key={i}>
+                    <Avatar src={person.imageUrl} />                        
+                    {!this.props.admin.edit ? 
+                        <span>{person.name}</span>
+                        : 
+                        <span>{person.name} &nbsp;&nbsp;
+                            <button 
+                                className="btn btn-default pull-right" 
+                                onClick={this.handleTouchTap.bind(this, person.id)}
+                            >
+                            edit
+                            </button>
+                        </span>
+                    }                                         
+                </ListItem>
             );
         });
 
-        return (
-            <div>     
-                <Row>     
-                    <Col md={8} mdOffset={2}>                      
-                        <input type="text" placeholder="user..." ref={(user) => this.user = user} />
-                        <input type="text" placeholder="pass..." ref={(pass) => this.pass = pass} />                        
-                        <button type="button" className="btn btn-primary" onClick={this.handleEditState}>
-                            {this.props.admin.edit ? 
-                                <span>Log Out</span>
-                                :
-                                <span>Log In</span>
-                            }
-                        </button>
-                        <hr />
-                    </Col>
-                </Row>
+        return (            
+            <Grid>                              
                 <Row>
-                    <Col md={6} mdOffset={2}>
-                        <h3>Edit An Existing Character</h3>                    
-                        <br />                                       
-                        <ul>
-                            {displayData}
-                        </ul>
-                        <br />
-                        <hr />
-                        <h3>Add A New Character</h3>
-                        <br />                                                                                                                    
-                        <input type="text" id="addName" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter new name..." ref={(text) => this.newName = text} /><br />
-                        <input type="text" id="addOccupation" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter occupation..." ref={(text) => this.newOccupation = text} /><br />
-                        <input type="text" id="addInfo" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter image url..." ref={(text) => this.newImage = text} /><br />
-                        <textarea type="text" id="addImage" rows="5" className="form form-control" disabled={!this.props.admin.edit} placeholder="enter info..." ref={(text) => this.newInfo = text} /><br />
-                        <br />
-                        <button disabled={!this.props.admin.edit} className="btn btn-primary" onClick={this.handleAdd} id="add">Add</button>                    
+                    <Col md={3}>                                                              
+                        <Card>     
+                            <CardTitle title="Characters" />   
+                            <RaisedButton
+                                label="Add Contact"
+                                primary={true}
+                                disabled={!this.props.admin.edit} 
+                                onClick={this.handleAdd}
+                                style={{marginLeft: 12}}
+                            />                                                                      
+                            <List>
+                                {displayData}
+                            </List>                            
+                        </Card>
                     </Col>
+                    <Col md={9}>
+                        <Card>
+                            <CardTitle title="New Character" />                                                                                                                                           
+                            <TextField 
+                                id="addName" 
+                                disabled={!this.props.admin.edit} 
+                                placeholder="enter new name..." 
+                                ref={(text) => this.newName = text} 
+                            /><br />
+                            <TextField 
+                                id="addOccupation" 
+                                disabled={!this.props.admin.edit} 
+                                placeholder="enter occupation..." 
+                                ref={(text) => this.newOccupation = text} 
+                            /><br />
+                            <TextField 
+                                id="addImage" 
+                                disabled={!this.props.admin.edit} 
+                                placeholder="enter image url..." 
+                                ref={(text) => this.newImage = text} 
+                            /><br />
+                            <TextField 
+                                id="addInfo" 
+                                rows="5" 
+                                disabled={!this.props.admin.edit} 
+                                placeholder="enter info..." 
+                                ref={(text) => this.newInfo = text} 
+                            /><br />
+                            <br />
+                            <RaisedButton          
+                                label="submit"                       
+                                primary={true}
+                                onClick={this.handleAdd}
+                                style={{marginLeft: 12}} 
+                                disabled={!this.props.admin.edit}
+                                id="add"
+                            />              
+                            <CardActions>
+                                <FlatButton 
+                                    label="cancel" 
+                                    disabled={!this.props.admin.edit}
+                                    onClick={() => alert('write cancel function')} 
+                                />
+                            </CardActions>                                                             
+                        </Card>
+                    </Col>                                        
                 </Row>
-            </div>
+            </Grid>            
          );
     }
 }
-
-const styles = {
-    chip: {
-        margin: 4
-    }
-};
 
 export default Admin;

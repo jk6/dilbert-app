@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const AppContainer = (props) => {
     return (
-        <div>
+        <div style={styles.background}>
             <DevTools />
             <Grid>
                 <AppNav />            
@@ -15,6 +15,12 @@ const AppContainer = (props) => {
             </Grid>
         </div>
     );
+};
+
+const styles = {
+    background: {
+        backgroundColor: '#e2e2e2'        
+    }
 };
 
 export default AppContainer;

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { action } from 'mobx';
 import { observer, inject } from 'mobx-react';
+import { Grid, Row, Col } from 'react-bootstrap/lib';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import { Link, hashHistory } from 'react-router';
-import { Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 @inject('characters') @observer
@@ -37,26 +40,33 @@ class EditCharacter extends Component {
         const { id, name, occupation, imageUrl, info } = this.props.characters.data[idx];
         //const newObj = { id, name, occupation, imageUrl, info };
         return (
-            <div>
-                <Col md={6} mdOffset={2}>
-                    <h3>Editing {name}</h3> <img src={imageUrl} className="img img-circle" style={styles.image} />                
-                    <br />
-                    <hr />
-                    <input type="text" className="form form-control" defaultValue={name} onBlur={this.handleChange.bind(this, 'name')}  /><br />
-                    <input type="text" className="form form-control" defaultValue={occupation} onBlur={this.handleChange.bind(this, 'occupation')} /><br />
-                    <input type="text" className="form form-control" defaultValue={imageUrl} onBlur={this.handleChange.bind(this, 'imageUrl')} /><br />
-                    <textarea type="text" rows="5" className="form form-control" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
-                    <br />
-                    <button 
-                        className="btn btn-primary" 
-                        onClick={this.handleEditCharacter}
-                    >
-                        Save changes
-                    </button>
-                    &nbsp;&nbsp;
-                    <a href="" onClick={this.handleCancel}>cancel</a>
-                </Col>
-            </div>
+            <Grid>
+                <Row>
+                    <Col md={10} mdOffset={2}>
+                        <Card>
+                            <CardTitle title={name} />
+                            <img src={imageUrl} className="img img-circle" style={styles.image} />                
+                            <br />                        
+                            <input type="text" className="form form-control" defaultValue={name} onBlur={this.handleChange.bind(this, 'name')}  /><br />
+                            <input type="text" className="form form-control" defaultValue={occupation} onBlur={this.handleChange.bind(this, 'occupation')} /><br />
+                            <input type="text" className="form form-control" defaultValue={imageUrl} onBlur={this.handleChange.bind(this, 'imageUrl')} /><br />
+                            <textarea type="text" rows="5" className="form form-control" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
+                            <br />
+                            <RaisedButton          
+                                label="Save changes"                       
+                                primary={true}
+                                onClick={this.handleEditCharacter}
+                                style={{marginLeft: 12}}                             
+                            />                                                 
+                            <CardActions>
+                                <FlatButton label="cancel" onClick={this.handleCancel} />
+                            </CardActions>
+                        </Card>
+                    </Col>
+                </Row>
+                <br />
+                <br />
+            </Grid>
         );
     }
 }
