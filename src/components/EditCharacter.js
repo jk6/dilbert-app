@@ -30,7 +30,7 @@ class EditCharacter extends Component {
         hashHistory.push('/admin');
     }
     componentDidMount (){
-        this.props.characters.getData();
+        //this.props.characters.loadCharacters();
     }
     render () {
         let idx = this.props.params.id - 1;

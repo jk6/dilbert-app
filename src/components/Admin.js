@@ -14,7 +14,7 @@ class Admin extends Component {
 
         this.handleAdd = this.handleAdd.bind(this);        
         this.handleEditState = this.handleEditState.bind(this);         
-    }    
+    }        
     handleAdd (){
         let id = this.props.characters.data.length + 1;
         let name = this.newName.value;
@@ -30,18 +30,16 @@ class Admin extends Component {
             info
         };
 
-        this.props.characters.addCharacter(newCharacter);
-        //document.getElementById('add').value = '';
-        //document.getElementById('addText').focus();        
+        this.props.characters.addCharacter(newCharacter);                
     }
     handleEditState (){        
         this.props.admin.checkCred(this.user.value, this.pass.value);
     }    
     handleTouchTap (id){
         hashHistory.push(`/edit/${id}`);
-    }
+    }    
     componentDidMount (){
-        //this.props.characters.getData();
+        this.props.characters.loadCharacters();
     }
     render (){        
         let displayData = this.props.characters.data.map((person, i) => {

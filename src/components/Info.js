@@ -9,10 +9,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 class Info extends Component {
     constructor (props){
         super (props);
-    }
-    render (){           
-        this.props.characters.getSelectedPerson(this.props.params.id);
 
+        this.loadPerson = this.loadPerson.bind(this);
+    }
+    loadPerson (){
+        this.props.characters.getSelectedPerson(this.props.params.id);
+    }
+    componentDidMount (){
+        this.loadPerson();
+    }
+    render (){                   
         const { name, occupation, info, imageUrl } = this.props.characters.selectedPerson;
         
         return (            

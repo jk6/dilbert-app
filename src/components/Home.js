@@ -7,12 +7,12 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 @inject('characters') @observer
-class Home extends Component {
+class Home extends Component {    
     viewInfo (id){
         hashHistory.push(`/info/${id}`);
-    }
+    }        
     componentDidMount (){
-        //this.props.characters.getData();
+        this.props.characters.loadCharacters();
     }
     render () {                
         return (
