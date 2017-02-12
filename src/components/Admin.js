@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { Link, hashHistory } from 'react-router';
 import Avatar from 'material-ui/Avatar';
-import { Card, CardActions, CardTitle } from 'material-ui/Card';
+import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { List, ListItem } from 'material-ui/List';
@@ -16,13 +16,14 @@ class Admin extends Component {
     constructor (props){
         super (props);
 
-        this.handleAdd = this.handleAdd.bind(this);                      
-    }        
+        this.handleAdd = this.handleAdd.bind(this);    
+        this.handleCheckAuth = this.handleCheckAuth.bind(this);                  
+    }            
     handleAdd (){
         let id = this.props.characters.data.length + 1;
         let name = this.newName.value;
         let occupation = this.newOccupation.value;
-        let imageUrl = this.newImage.value;
+        let imageUrl = this.newImage.value;        
         let info = this.newInfo.value;
         
         const newCharacter = {
@@ -38,10 +39,14 @@ class Admin extends Component {
     handleTouchTap (id){
         hashHistory.push(`/edit/${id}`);
     }    
+    handleCheckAuth (){
+        this.props.admin.checkAuth();
+    }        
     componentDidMount (){
         //this.props.characters.loadCharacters();
+        this.handleCheckAuth();
     }
-    render (){        
+    render (){                
         let displayData = this.props.characters.data.map((person, i) => {            
             return (                                
                 <ListItem key={i}>
@@ -65,13 +70,13 @@ class Admin extends Component {
         return (            
             <Grid>                              
                 <Row>
-                    <Col md={3}>                                                              
+                    <Col md={4}>                                                              
                         <Card>     
                             <CardTitle title="Characters" />   
                             <RaisedButton
                                 label="Add Contact"
                                 primary={true}
-                                disabled={!this.props.admin.edit} 
+                                //disabled={!this.props.admin.edit} 
                                 onClick={this.handleAdd}
                                 style={{marginLeft: 12}}
                             />                                                                      
@@ -80,31 +85,38 @@ class Admin extends Component {
                             </List>                            
                         </Card>
                     </Col>
-                    <Col md={9}>
+                    <Col md={8}>
                         <Card>
                             <CardTitle title="New Character" />                                                                                                                                           
-                            <TextField 
+                            <input 
+                                type="text"
+                                className="form-control" 
                                 id="addName" 
-                                disabled={!this.props.admin.edit} 
+                                //disabled={!this.props.admin.edit} 
                                 placeholder="enter new name..." 
                                 ref={(text) => this.newName = text} 
                             /><br />
-                            <TextField 
+                            <input 
+                                type="text"
+                                className="form-control" 
                                 id="addOccupation" 
-                                disabled={!this.props.admin.edit} 
+                                //disabled={!this.props.admin.edit} 
                                 placeholder="enter occupation..." 
                                 ref={(text) => this.newOccupation = text} 
                             /><br />
-                            <TextField 
+                            <input 
+                                type="text"
+                                className="form-control" 
                                 id="addImage" 
-                                disabled={!this.props.admin.edit} 
+                                //disabled={!this.props.admin.edit} 
                                 placeholder="enter image url..." 
                                 ref={(text) => this.newImage = text} 
                             /><br />
-                            <TextField 
+                            <input type="text"
+                            className="form-control" 
                                 id="addInfo" 
                                 rows="5" 
-                                disabled={!this.props.admin.edit} 
+                                //disabled={!this.props.admin.edit} 
                                 placeholder="enter info..." 
                                 ref={(text) => this.newInfo = text} 
                             /><br />
@@ -114,13 +126,13 @@ class Admin extends Component {
                                 primary={true}
                                 onClick={this.handleAdd}
                                 style={{marginLeft: 12}} 
-                                disabled={!this.props.admin.edit}
+                                //disabled={!this.props.admin.edit}
                                 id="add"
                             />              
                             <CardActions>
                                 <FlatButton 
                                     label="cancel" 
-                                    disabled={!this.props.admin.edit}
+                                    //disabled={!this.props.admin.edit}
                                     onClick={() => alert('write cancel function')} 
                                 />
                             </CardActions>                                                             

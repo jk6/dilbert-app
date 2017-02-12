@@ -30,9 +30,9 @@
     },
     {
         "id": "5",
-        "name": "Alice",
-        "imageUrl": "images/alice.gif",
+        "name": "Alice",        
         "occupation": "Engineer",
+        "imageUrl": "images/alice.gif",
         "info": "Alice is, by far, the hardest-working employee at Path-E-Tech. She's also the highest paid (at times), and is a chronic overachiever, which often puts her at odds with Wally and his apathetic laziness. "   
     },
     {

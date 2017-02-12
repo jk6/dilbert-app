@@ -45,6 +45,7 @@ class EditCharacter extends Component {
                     <Col md={10} mdOffset={2}>
                         <Card>
                             <CardTitle title={name} />
+                            <CardText>
                             <img src={imageUrl} className="img img-circle" style={styles.image} />                
                             <br />                        
                             <input type="text" className="form form-control" defaultValue={name} onBlur={this.handleChange.bind(this, 'name')}  /><br />
@@ -52,13 +53,14 @@ class EditCharacter extends Component {
                             <input type="text" className="form form-control" defaultValue={imageUrl} onBlur={this.handleChange.bind(this, 'imageUrl')} /><br />
                             <textarea type="text" rows="5" className="form form-control" defaultValue={info} onBlur={this.handleChange.bind(this, 'info')} /><br />
                             <br />
-                            <RaisedButton          
-                                label="Save changes"                       
-                                primary={true}
-                                onClick={this.handleEditCharacter}
-                                style={{marginLeft: 12}}                             
-                            />                                                 
+                            </CardText>                                                                             
                             <CardActions>
+                                <RaisedButton          
+                                    label="Save changes"                       
+                                    primary={true}
+                                    onClick={this.handleEditCharacter}
+                                    style={{marginLeft: 12}}                             
+                                />
                                 <FlatButton label="cancel" onClick={this.handleCancel} />
                             </CardActions>
                         </Card>

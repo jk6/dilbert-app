@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import { hashHistory } from 'react-router';
 
 class Admin {    
     @observable edit = false;
@@ -13,6 +14,11 @@ class Admin {
         }
         else {
             this.edit = false;
+        }
+    }
+    checkAuth (){
+        if (!this.edit){
+            hashHistory.push('/');
         }
     }
 }
