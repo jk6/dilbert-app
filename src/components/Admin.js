@@ -120,16 +120,16 @@ class Admin extends Component {
                                 placeholder="enter info..." 
                                 ref={(text) => this.newInfo = text} 
                             /><br />
-                            <br />
-                            <RaisedButton          
-                                label="submit"                       
-                                primary={true}
-                                onClick={this.handleAdd}
-                                style={{marginLeft: 12}} 
-                                //disabled={!this.props.admin.edit}
-                                id="add"
-                            />              
+                            <br />                                         
                             <CardActions>
+                                <RaisedButton          
+                                    label="submit"                       
+                                    primary={true}
+                                    onClick={this.handleAdd}
+                                    style={{marginLeft: 12}} 
+                                    //disabled={!this.props.admin.edit}
+                                    id="add"
+                                /> 
                                 <FlatButton 
                                     label="cancel" 
                                     //disabled={!this.props.admin.edit}

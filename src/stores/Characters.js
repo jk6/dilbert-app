@@ -24,7 +24,7 @@ class Characters {
     @action('edit character')
     editCharacter (){
         this.data.filter(person => person.id == this.newObj.id)
-            .map(person => Object.assign(person, this.newObj))
+                .map(person => Object.assign(person, this.newObj))
 
         this.newObj = {};
     }

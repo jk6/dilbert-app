@@ -16,7 +16,7 @@ module.exports = {
       'react-bootstrap',
       'react-dom',
       'react-router',
-      'react-tap-event-plugin'
+      'react-tap-event-plugin'      
     ]
   },
   output: {

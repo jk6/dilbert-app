@@ -8,11 +8,11 @@ const AppContainer = (props) => {
     return (
         <div style={styles.background}>
             <DevTools />
-            <Grid>
+            {/*<Grid>*/}
                 <AppNav />            
                 <hr />            
                 {props.children}
-            </Grid>
+            {/*</Grid>*/}
         </div>
     );
 };

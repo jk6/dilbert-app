@@ -5,7 +5,6 @@ import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import 'bootstrap/dist/css/bootstrap.css';
 
 @inject('characters') @observer
 class Home extends Component {    
@@ -17,17 +16,11 @@ class Home extends Component {
     }
     render () {                
         return (
-            <div>             
-                <div className="jumbotron container-fluid" style={styles.jumbotron}>
-                    <div className="container">
-                        <h1>Dilbert App</h1>
-                    </div>                
-                </div>
-                <div className="container">
-                    <GridList
-                        cellHeight={180}
-                        style={styles.gridList}
-                    >
+            <div style={styles.root}>                               
+                <GridList
+                    cellHeight={180}
+                    style={styles.gridList}
+                >
                     <Subheader>Characters</Subheader>
                     
                     {this.props.characters.data.map((person, i) => {
@@ -45,8 +38,7 @@ class Home extends Component {
                             </GridTile>
                         )
                     })}                
-                    </GridList>
-                </div>                            
+                </GridList>                                
             </div>            
         );
     }
@@ -58,18 +50,12 @@ const styles = {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
     },
-    gridList: {        
-        display: 'flex',
-        flexWrap: 'nowrap',
-        overflowX: 'auto',
+    gridList: {
+        width: 600,
+        height: 550,
+        overflowY: 'auto',
         cursor: 'pointer'
     },
-    jumbotron: {
-        background: "url('http://assets.gocomics.com/uploads/features/dc/widgets/link_w_title_large_dc_dc_readdilbertblog_740x440.jpg') no-repeat center center",
-        backgroundSize: 'cover',
-        minHeight: '300px'
-
-    }
 };
 
 export default Home;
