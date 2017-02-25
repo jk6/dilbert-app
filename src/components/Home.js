@@ -13,7 +13,9 @@ class Home extends Component {
         hashHistory.push(`/info/${id}`);
     }        
     componentDidMount (){
-        this.props.characters.loadCharacters();
+        if (this.props.characters.data.length < 1){
+            this.props.characters.loadCharacters();
+        }
     }
     render () {                
         return (
