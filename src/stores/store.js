@@ -1,9 +1,9 @@
 import characters from './Characters';
-import adminState from './AdminState';
+import admin from './AdminStore';
 
 const stores = {
     characters,
-    adminState,
+    admin,
 };
 
 export default stores;

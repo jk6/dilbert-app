@@ -21,7 +21,7 @@ injectTapEventPlugin();
 let mountNode = document.getElementById('content');
 ReactDOM.render(
     (<MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-        <Provider characters={stores.characters} admin={stores.adminState}>
+        <Provider characters={stores.characters} admin={stores.admin}>
             <Router history={hashHistory}>
                 <Route path="/" component={AppContainer}>
                     <IndexRoute component={Home} />

@@ -23,7 +23,7 @@ class Home extends Component {
             <div>             
                 <div className="jumbotron container-fluid" style={styles.jumbotron}>
                     <div className="container">
-                        <h1>Dilbert App</h1>
+                        <h1>Dilbert</h1>
                     </div>                
                 </div>
                 <div className="container">
@@ -68,7 +68,7 @@ const styles = {
         cursor: 'pointer'
     },
     jumbotron: {
-        background: "url('http://assets.gocomics.com/uploads/features/dc/widgets/link_w_title_large_dc_dc_readdilbertblog_740x440.jpg') no-repeat center center",
+        background: "url('images/dilbert-cover.jpg') no-repeat center center",
         backgroundSize: 'cover',
         minHeight: window.screen.availHeight * 0.45
 

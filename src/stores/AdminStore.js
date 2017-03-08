@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import { hashHistory } from 'react-router';
 
-class Admin {    
+class AdminStore {    
     @observable edit = false;
     @observable user = 'derp';
     @observable pass = '123';
@@ -23,4 +23,4 @@ class Admin {
     }
 }
 
-export default new Admin();
+export default new AdminStore();
