@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { action } from 'mobx';
+import { action, runInAction } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { Grid, Row, Col } from 'react-bootstrap/lib';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
@@ -15,12 +15,14 @@ class EditCharacter extends Component {
         
         this.handleEditCharacter = this.handleEditCharacter.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
-    }
-    @action('handle edit actions')
-    handleEditCharacter (){
-        this.props.characters.newObj.id = this.props.params.id;
-        this.props.characters.editCharacter();        
-        hashHistory.push('/admin');
+    }    
+    @action handleEditCharacter (){
+        runInAction('handle edit actions', () => {
+            this.props.characters.newObj.id = this.props.params.id;
+            this.props.characters.editCharacter();        
+            hashHistory.push('/admin');
+        });
+        
     }
     handleChange (field, e){        
         this.props.characters.newObj[field] = e.target.value;        

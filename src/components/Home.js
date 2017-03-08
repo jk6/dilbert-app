@@ -18,6 +18,7 @@ class Home extends Component {
         }
     }
     render () {                
+        const { data } = this.props.characters;
         return (
             <div>             
                 <div className="jumbotron container-fluid" style={styles.jumbotron}>
@@ -32,7 +33,7 @@ class Home extends Component {
                     >
                     <Subheader>Characters</Subheader>
                     
-                    {this.props.characters.data.map((person, i) => {
+                    {data.map((person, i) => {
                         let id = person.id;
                         var boundClick = this.viewInfo.bind(this, id);
                         return (                            
@@ -69,7 +70,7 @@ const styles = {
     jumbotron: {
         background: "url('http://assets.gocomics.com/uploads/features/dc/widgets/link_w_title_large_dc_dc_readdilbertblog_740x440.jpg') no-repeat center center",
         backgroundSize: 'cover',
-        minHeight: '300px'
+        minHeight: window.screen.availHeight * 0.45
 
     }
 };
