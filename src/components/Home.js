@@ -27,7 +27,7 @@ class Home extends Component {
                         <h1>Dilbert</h1>
                     </div>                
                 </div>
-                <Grid>       
+                <Grid>      
                 <div className="container">
                     <Col md={10}>
                         <GridList
