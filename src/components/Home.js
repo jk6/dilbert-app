@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { hashHistory } from 'react-router';
 import { GridList, GridTile } from 'material-ui/GridList';
+import { Grid, Row, Col } from 'react-bootstrap';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
@@ -20,36 +21,40 @@ class Home extends Component {
     render () {                
         const { data } = this.props.characters;
         return (
-            <div>             
+            <div>                      
                 <div className="jumbotron container-fluid" style={styles.jumbotron}>
                     <div className="container">
                         <h1>Dilbert</h1>
                     </div>                
                 </div>
+                <Grid>       
                 <div className="container">
-                    <GridList
-                        cellHeight={180}
-                        style={styles.gridList}
-                    >
-                    <Subheader>Characters</Subheader>
-                    
-                    {data.map((person, i) => {
-                        let id = person.id;
-                        var boundClick = this.viewInfo.bind(this, id);
-                        return (                            
-                            <GridTile
-                                key={i}
-                                title={person.name}
-                                subtitle={person.occupation}
-                                onTouchTap={boundClick}
-                                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                            >
-                                <img src={person.imageUrl} />                        
-                            </GridTile>
-                        )
-                    })}                
-                    </GridList>
-                </div>                            
+                    <Col md={10}>
+                        <GridList
+                            cellHeight={180}                            
+                            style={styles.gridList}
+                        >
+                        <Subheader>Characters</Subheader>
+                        
+                        {data.map((person, i) => {
+                            let id = person.id;
+                            var boundClick = this.viewInfo.bind(this, id);
+                            return (                            
+                                <GridTile
+                                    key={i}
+                                    title={person.name}
+                                    subtitle={person.occupation}
+                                    onTouchTap={boundClick}
+                                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                                >
+                                    <img src={person.imageUrl} />                        
+                                </GridTile>
+                            )
+                        })}                
+                        </GridList>
+                    </Col>
+                </div> 
+                </Grid>                           
             </div>            
         );
     }
